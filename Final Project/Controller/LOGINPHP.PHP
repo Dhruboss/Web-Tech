@@ -17,10 +17,28 @@
 				$_SESSION['id'] = $id;
 		header("location: ../View/DASHBOARD.php");
 			}
-			else
-			{
-				echo "<script>alert('Username or Password incorrect!')</script>";
-			}
+	
 		}
+
+		    if($_POST['Username']==null  && $_POST['Password']==null)
+    {
+        $msg="Enter User Name & Password";
+    }
+    elseif($_POST['Username']==null)
+    {
+        $msg="Enter User Name";
+    }
+    elseif($_POST['Password']==null)
+    {
+        $msg="Enter Password";
+    }
+    else
+    {
+		$msg="username or password invalid";
+		
 	}
-?>
+    
+
+
+}
+	

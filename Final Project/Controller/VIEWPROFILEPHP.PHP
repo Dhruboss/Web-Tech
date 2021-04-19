@@ -5,4 +5,5 @@
     $id = $data["ID"];
     $name = $data["Name"];
     $username = $data["Username"];
+    $password = $data["Password"];
 ?>

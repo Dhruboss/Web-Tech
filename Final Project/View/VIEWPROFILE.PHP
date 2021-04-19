@@ -30,10 +30,11 @@
   </nav>
   <article>
     <div class="col-sm-9">
-     
+      <h1>Profile Information</h1>
       <p>Name           :   <?php echo $name ?></p><hr>
       <p>ID             :   <?php echo $id ?></p><hr>
       <p>Username          :   <?php echo $username ?></p><hr>
+      <p>Password          :   <?php echo $password ?></p><hr>
     </div> 
 
   </article>

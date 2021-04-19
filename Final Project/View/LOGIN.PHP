@@ -7,6 +7,55 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+<script>
+
+ function validateform(){  
+      var Username=document.myform.Username.value;  
+      var Password=document.myform.Password.value; 
+
+
+      if (Username==null || Username==""){  
+        alert("Name can't be blank");  
+        return false;  
+      }
+            else if(Password.length<8){  
+        alert("Password must be at least 8 characters long.");  
+        return false;  
+      }
+
+}
+
+
+
+    function checkUserName() {
+      if (document.getElementById("Username").value == "") {
+          document.getElementById("UsernameErr").innerHTML = "User Name can't be blank";
+          document.getElementById("UsernameErr").style.color = "red";
+          document.getElementById("Username").style.borderColor = "red";
+      }else{
+          document.getElementById("UsernameErr").innerHTML = "";
+        document.getElementById("Username").style.borderColor = "black";
+      }
+      
+        }
+
+
+
+    function checkPassword() {
+      if (document.getElementById("Password").value == "") {
+          document.getElementById("PasswordErr").innerHTML = "Password can't be blank";
+          document.getElementById("PasswordErr").style.color = "red";
+          document.getElementById("Password").style.borderColor = "red";
+      }else{
+          document.getElementById("PasswordErr").innerHTML = "";
+        document.getElementById("Password").style.borderColor = "black";
+      }
+      
+        }
+
+</script>
+
 <?php include '../Controller/CSS.php';?>
 
 </head>
@@ -21,7 +70,7 @@
 
 <?php include '../controller/LOGINPHP.php';?>
 
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name = "myform" method="POST"  onsubmit="validateform()"  >
 	<table align="center">
 		
 		<tr>
@@ -34,11 +83,13 @@
     	<?php } ?>
 		<tr>
 			<td>Username</td>
-			<td><input type="text" name="Username"></td>
+			<td><input type="text" name="Username" id ="Username" onkeyup="checkUserName()" onblur="checkUserName()"   ></td>
+			 <td><span id="UsernameErr"></span></td>
 		</tr>
 		<tr>
 			<td>Password</td>
-			<td><input type="password" name="Password"></td>
+			<td><input type="password" name="Password" id ="Password" onkeyup="checkPassword()" onblur="checkPassword()"  ></td>
+			<td><span id="PasswordErr"></span></td>
 		</tr>
 		<tr>
 			<td align="right" colspan="2"><input type="submit" class="btn btn-success" name="login" value="login"></td>

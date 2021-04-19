@@ -24,7 +24,7 @@
     <ul>
       <li><a href="COMMUNITY.php">Community</a></li>
       <li><a href="VIEWPROFILE.php">View Profile</a></li>
-      <li><a href="CHANGEPICTURE.php">Change Profile Picture</a></li>
+      <li><a href="UPDATEPROFILE.php">Update</a></li>
       <li><a href="../controller/LOGOUTPHP.php">Logout</a></li>
     </ul>
   </nav>
