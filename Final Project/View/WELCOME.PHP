@@ -21,7 +21,7 @@
 
 
 
-<?php include 'FOOTER.php';?>
+<?php include '../controller/FOOTER.php';?>
 
 
 </body>

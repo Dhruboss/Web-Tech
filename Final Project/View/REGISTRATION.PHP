@@ -5,6 +5,8 @@
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
+<script src="../Controller/jquery.js"></script>
+
 
 <title>Registration</title>
 <meta charset="utf-8">
@@ -155,8 +157,6 @@
 
 
 
-
-
  </script>
  
 </head>
@@ -178,8 +178,10 @@
   <br><br>
 
   Username: <input type="text" name="username" id ="username" onkeyup="checkUserName()" onblur="checkUserName()" >
-    <span id="usernameErr"></span>
+  <span style="color:blue" id="availability"></span>
+  <span id="usernameErr"></span>
   <span class="error">* <?php echo $unameErr;?></span>
+
   <br><br>
 
   Password: <input type="text" name="password" id="password" onkeyup="checkPass()" onblur="checkPass()">
@@ -250,3 +252,20 @@
 </body>
 </html>
 
+<script>
+    $(document).ready(function(){
+        $('#username').keyup(function(){
+            var name = $(this).val();
+            $.ajax({
+                url: "../Controller/check.php",
+                method:"POST",
+                data:{my_name:name},
+                dataType:"text",
+                success:function(html)
+                {
+                    $('#availability').html(html);
+                }
+            });
+        });
+    });
+</script>

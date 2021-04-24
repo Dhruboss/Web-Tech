@@ -15,6 +15,8 @@ header {
   color: white;
 }
 
+
+
 nav {
   float: left;
   width: 30%;

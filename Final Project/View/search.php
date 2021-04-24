@@ -12,9 +12,6 @@
 
 
 <header>
-
-
-
 <?php include '../controller/DASHBOARDPHP.php';?>
 
 
@@ -28,29 +25,58 @@
       <li><a href="COMMUNITY.php">Community</a></li>
       <li><a href="VIEWPROFILE.php">View Profile</a></li>
       <li><a href="UPDATEPROFILE.php">Update</a></li>
-      <li><a href="search.php">Search</a></li>
+      <li><a href="DASHBOARD.php">Dashboard</a></li>
       <li><a href="../controller/LOGOUTPHP.php">Logout</a></li>
     </ul>
   </nav>
   <article>
 
-<?php 
+<!DOCTYPE html>
+<html>
+<head>
 
 
+  <title>Live search</title>
+  <script> 
+
+  function ajax()
+  {
+
+  var name = document.getElementById('name').value;
 
 
-if (isset($_SESSION['uname'])) {
-  echo "<h1> Welcome ".$_SESSION['uname']."</h2>";
+  var xhttp = new XMLHttpRequest();
 
 
-}
-else{
-    $msg="error";
-    header("location:login.php");
-    // echo "<script>location.href='login.php'</script>";
+  xhttp.open('POST', '../Controller/searchphp.php', true);
+
+  xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+  xhttp.send('name='+name);
+
+  xhttp.onreadystatechange = function()
+  {
+    if(this.readyState == 4 && this.status == 200)
+    {
+
+      document.getElementById('result').innerHTML = this.responseText;
+    }
   }
+   }
 
- ?>
+
+
+  </script>
+
+
+  <h3>Search User</h3>
+  <input type="text" name="name" id="name" onkeyup="ajax()">
+
+  <div id="result"></div>
+
+
+
+
   </article>
 </section>
 
